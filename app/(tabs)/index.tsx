@@ -1,3 +1,5 @@
+// app/(tabs)/index.tsx
+
 import { Link } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -8,7 +10,8 @@ export default function Home() {
       <Text style={styles.title}>MINI NOTES</Text>
       <Text style={styles.subtitle}>Capture your thoughts instantly.</Text>
 
-      <Link href="/notes" asChild>
+      {/* FIXED ROUTE */}
+      <Link href="/tasks/notes" asChild>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>View My Notes</Text>
         </TouchableOpacity>
@@ -23,6 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
+    backgroundColor: "#121212",
   },
   emoji: { fontSize: 80, marginBottom: 10 },
   title: { fontSize: 32, fontWeight: "bold", color: "#fff" },

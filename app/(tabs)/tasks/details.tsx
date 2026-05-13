@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { db, Note } from "./_data";
+import { db, Note } from "../../../lib/_data"; // Updated path
 
 export default function NoteDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -29,7 +29,6 @@ export default function NoteDetail() {
           <Text style={styles.statusText}>{note.status}</Text>
         </View>
       </View>
-
       <Text style={styles.title}>{note.title}</Text>
       <View style={styles.divider} />
       <Text style={styles.label}>DETAILS</Text>
@@ -37,11 +36,10 @@ export default function NoteDetail() {
         {note.detail || "No additional details."}
       </Text>
 
-      {/* EDIT BUTTON ADDED BACK */}
       <TouchableOpacity
         style={styles.editButton}
         onPress={() =>
-          router.push({ pathname: "/edit", params: { id: note.id } })
+          router.push({ pathname: "/tasks/edit", params: { id: note.id } })
         }
       >
         <Text style={styles.editText}>Edit Task</Text>

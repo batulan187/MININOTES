@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { db, Note } from "./_data";
+import { db, Note } from "../../../lib/_data";
 
 export default function AddOrEditNote() {
   const router = useRouter();

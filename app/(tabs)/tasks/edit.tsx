@@ -1,16 +1,15 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import {
-    Alert,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { db, executeSql, Note } from "./_data";
-
+import { db, executeSql, Note } from "../../../lib/_data"; // Updated path
 export default function EditNote() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();

@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { db, Note } from "./_data";
+import { db, Note } from "../../../lib/_data"; // Updated path
 
 export default function NotesList() {
   const router = useRouter();
@@ -27,22 +27,18 @@ export default function NotesList() {
   );
 
   const handleDelete = (id: string) => {
-    // Re-added the Alert confirmation here
     Alert.alert(
       "Delete Task",
       "Are you sure you want to delete this task? This action cannot be undone.",
       [
-        {
-          text: "Cancel",
-          style: "cancel", // This keeps the note safe
-        },
+        { text: "Cancel", style: "cancel" },
         {
           text: "Delete",
-          style: "destructive", // Shows red on iOS
+          style: "destructive",
           onPress: () => {
             try {
               db.runSync("DELETE FROM notes WHERE id = ?", [id]);
-              fetchNotes(); // Refresh list only after successful delete
+              fetchNotes();
             } catch (error) {
               console.error("Delete Error:", error);
               Alert.alert("Error", "Could not delete the task.");
@@ -68,7 +64,7 @@ export default function NotesList() {
         <TouchableOpacity
           style={styles.viewButton}
           onPress={() =>
-            router.push({ pathname: "/details", params: { id: item.id } })
+            router.push({ pathname: "/tasks/details", params: { id: item.id } })
           }
         >
           <Text style={styles.buttonText}>View Details</Text>
@@ -97,7 +93,10 @@ export default function NotesList() {
           </View>
         }
       />
-      <TouchableOpacity style={styles.fab} onPress={() => router.push("/add")}>
+      <TouchableOpacity
+        style={styles.fab}
+        onPress={() => router.push("/tasks/add")}
+      >
         <Text style={styles.fabText}>+</Text>
       </TouchableOpacity>
     </View>
